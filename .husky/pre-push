@@ -2,8 +2,8 @@ pnpm run lint
 
 pnpm run pre-commit
 
-pnpm run test:unit
-
-pnpm run test:e2e
+pnpm run test:unit --no-watch
 
 pnpm run build
+
+pnpm run test:e2e
