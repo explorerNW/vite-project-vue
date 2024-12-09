@@ -6,7 +6,7 @@ import router from '@/router'
 const { userInfo, setUserInfo } = useUserInfo()
 const logout = () => {
   setUserInfo({ ...userInfo, login: false })
-  router.replace('/')
+  router.replace('/login')
 }
 </script>
 
@@ -20,7 +20,7 @@ const logout = () => {
       <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
-        <RouterLink to="" @click="logout">logout</RouterLink>
+        <RouterLink to="/login" @click="logout">logout</RouterLink>
       </nav>
     </div>
   </header>
