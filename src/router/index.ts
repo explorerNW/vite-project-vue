@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import HomeView from '@/views/HomeView.vue'
 
 import { useUserInfo } from '@/stores/store'
 
@@ -31,12 +31,12 @@ const router = createRouter({
     {
       path: '/login',
       name: 'login',
-      component: () => import('../views/login.vue'),
+      component: () => import('../views/loginView.vue'),
     },
     {
       path: '/403',
       name: '403',
-      component: () => import('../views/403.vue'),
+      component: () => import('../views/403View.vue'),
     },
   ],
 })
