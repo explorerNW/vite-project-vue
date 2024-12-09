@@ -1,6 +1,13 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
+import { useUserInfo } from '@/stores/store'
+import router from '@/router'
+const { userInfo, setUserInfo } = useUserInfo()
+const logout = () => {
+  setUserInfo({ ...userInfo, login: false })
+  router.replace('/login')
+}
 </script>
 
 <template>
@@ -13,6 +20,7 @@ import HelloWorld from './components/HelloWorld.vue'
       <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
+        <RouterLink to="/login" @click="logout">logout</RouterLink>
       </nav>
     </div>
   </header>
