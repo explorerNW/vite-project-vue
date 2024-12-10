@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
-import { useUserInfo } from '@/stores/store'
+import { useUserInfo } from '@/stores'
 import router from '@/router'
 const { userInfo, setUserInfo } = useUserInfo()
 const logout = () => {
