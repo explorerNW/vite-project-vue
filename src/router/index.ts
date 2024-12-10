@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '@/views/HomeView.vue'
 
-import { useUserInfo } from '@/stores/store'
+import { useUserInfo } from '@/stores'
 
 type Auth = {
   requireAuth: {
@@ -17,7 +17,7 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: HomeView,
-      meta: { requireAuth: { permissions: ['admin'], login: true } },
+      meta: { requireAuth: { permissions: ['admin'] } },
     },
     {
       path: '/about',
@@ -26,7 +26,7 @@ const router = createRouter({
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/AboutView.vue'),
-      meta: { requireAuth: { permissions: ['admin'], login: true } },
+      meta: { requireAuth: { permissions: [] } },
     },
     {
       path: '/login',
@@ -44,7 +44,7 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   const { userInfo } = useUserInfo()
   const meta = to.meta as Auth
-  if (meta.requireAuth?.login) {
+  if (meta.requireAuth) {
     if (userInfo.login) {
       if (
         !meta.requireAuth.permissions?.length ||
